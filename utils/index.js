@@ -20,4 +20,14 @@ export const encryptoByHash = (message) => {
   return sha.digest('hex');
 };
 
+export const getRandom = (min, max) => {
+  return Math.floor(Math.random() * max) + min;
+};
+
+export const getRandomItem = (list) => {
+  const len = list.length;
+  const i = getRandom(0, len);
+  return list[i];
+};
+
 export { upload, validate, HTTPError };

@@ -3,6 +3,10 @@ function withCreateTimeSchema(schema) {
     type: Date,
     required: true,
   };
+  schema.updatedTime = {
+    type: Date,
+    required: false,
+  };
   return schema;
 }
 
