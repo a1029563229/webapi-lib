@@ -1,9 +1,10 @@
-import commonParams from './common-params';
+import { withCreatedTime, withUpdatedTime } from './common-params';
 import queryParser from './query-parser';
 import validateRule from './validate-rule';
 
 export {
-  commonParams,
+  withCreatedTime,
+  withUpdatedTime,
   queryParser,
   validateRule,
 };

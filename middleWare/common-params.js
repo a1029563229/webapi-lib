@@ -1,6 +1,6 @@
 import { getNow } from '@/lib/utils';
 
-function commonParams() {
+function withCreatedTime() {
   return async (ctx, next) => {
     const { body } = ctx.request;
     if (!body) {
@@ -11,4 +11,15 @@ function commonParams() {
   };
 }
 
-export default commonParams;
+function withUpdatedTime() {
+  return async (ctx, next) => {
+    const { body } = ctx.request;
+    if (!body) {
+      ctx.request.body = {};
+    }
+    ctx.request.body.updatedTime = getNow();
+    await next();
+  };
+}
+
+export { withCreatedTime, withUpdatedTime };
