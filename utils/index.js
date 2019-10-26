@@ -3,7 +3,7 @@ import crypto from 'crypto';
 import upload from './oss';
 import { HTTPError } from './error';
 import validate from './validate';
-import Pagination from './Pagination';
+import Pagination from './pagination';
 
 export const noop = () => { };
 
