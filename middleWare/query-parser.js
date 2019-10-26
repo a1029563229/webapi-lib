@@ -1,3 +1,5 @@
+import url from 'url';
+import querystring from 'querystring';
 import set from 'lodash/set';
 
 /**
@@ -15,13 +17,15 @@ function queryParser() {
 
 /**
  * 将 url 转化为对象
- * @param {*} url
+ * @param {*} urlStr
  */
-function splitQueryToObject(url) {
+function splitQueryToObject(urlStr) {
+  const queryStr = url.parse(urlStr).query;
   const queryParams = {};
-  if (url.includes('?')) {
-    const paramStrList = url.split('?')[1].split('&');
-    paramStrList.reduce((c, param) => set(c, param.split('=')[0], convertPureNumber(param.split('=')[1])), queryParams);
+  if (queryStr) {
+    const queryPs = querystring.parse(queryStr);
+    // 将数字类型的字段转化为数字类型
+    Object.keys(queryPs).map(queryField => set(queryParams, queryField, convertPureNumber(queryPs[queryField])));
   }
 
   return queryParams;
