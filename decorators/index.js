@@ -1,5 +1,5 @@
-import withCreateTimeSchema from './withCreatedTime';
+import withCUTimeSchema from './withCreatedTime';
 
 export {
-  withCreateTimeSchema,
+  withCUTimeSchema,
 };

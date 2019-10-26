@@ -1,4 +1,4 @@
-function withCreateTimeSchema(schema) {
+function withCUTimeSchema(schema) {
   schema.createdTime = {
     type: Date,
     required: true,
@@ -10,4 +10,4 @@ function withCreateTimeSchema(schema) {
   return schema;
 }
 
-export default withCreateTimeSchema;
+export default withCUTimeSchema;
