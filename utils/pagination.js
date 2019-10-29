@@ -1,3 +1,5 @@
+import omit from 'lodash/omit';
+
 class Pagination {
   Schema = null;
 
@@ -5,8 +7,9 @@ class Pagination {
 
   pageSize = 10;
 
-  constructor(Schema) {
+  constructor(Schema, params = { page: 1, pageSize }) {
     this.Schema = Schema;
+    this.set(params.page, params.pageSize);
   }
 
   set(page = 1, pageSize = 10) {
@@ -19,9 +22,9 @@ class Pagination {
     return count;
   }
 
-  async query(ctx, schema = {}, sorter = {}) {
-    const { page } = this; const
-      { pageSize } = this;
+  async query(ctx, theSchema = {}, sorter = {}) {
+    const { page, pageSize } = this;
+    const schema = omit(theSchema, ['page', 'pageSize']);
     const start = (page - 1) * pageSize;
     const totalCount = await this.getCount(schema);
     const reply = await this.Schema.find(schema).sort(sorter).skip(start).limit(pageSize);
