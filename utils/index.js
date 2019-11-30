@@ -1,6 +1,5 @@
 import crypto from 'crypto';
 
-import upload from './oss';
 import { HTTPError } from './error';
 import validate from './validate';
 import Pagination from './pagination';
@@ -31,4 +30,4 @@ export const getRandomItem = (list) => {
   return list[i];
 };
 
-export { upload, validate, Pagination, HTTPError };
+export { validate, HTTPError, Pagination };
